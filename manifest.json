@@ -1,0 +1,21 @@
+{
+  "name": "受験復習アプリ",
+  "short_name": "復習",
+  "description": "中学受験の間違い問題を管理して忘却曲線で復習",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f0f4ff",
+  "theme_color": "#4f6ef7",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

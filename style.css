@@ -1,0 +1,495 @@
+:root {
+  --primary: #4f6ef7;
+  --primary-light: #e8ecff;
+  --success: #22c55e;
+  --warning: #f59e0b;
+  --danger: #ef4444;
+  --gray-50: #f9fafb;
+  --gray-100: #f3f4f6;
+  --gray-200: #e5e7eb;
+  --gray-400: #9ca3af;
+  --gray-600: #4b5563;
+  --gray-800: #1f2937;
+  --radius: 12px;
+  --shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: -apple-system, 'Hiragino Sans', sans-serif;
+  background: var(--gray-100);
+  color: var(--gray-800);
+  min-height: 100dvh;
+  padding-bottom: 80px;
+}
+
+/* ナビゲーション */
+.nav-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: white;
+  border-top: 1px solid var(--gray-200);
+  display: flex;
+  z-index: 100;
+  box-shadow: 0 -2px 8px rgba(0,0,0,0.06);
+}
+
+.nav-btn {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 10px 0 14px;
+  background: none;
+  border: none;
+  font-size: 10px;
+  color: var(--gray-400);
+  cursor: pointer;
+  transition: color 0.15s;
+}
+
+.nav-btn.active { color: var(--primary); }
+.nav-btn svg { width: 22px; height: 22px; }
+
+/* ページ */
+.page { display: none; }
+.page.active { display: block; }
+
+/* ヘッダー */
+.page-header {
+  background: white;
+  padding: 16px 20px 12px;
+  border-bottom: 1px solid var(--gray-200);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.page-header h1 {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.page-header .subtitle {
+  font-size: 12px;
+  color: var(--gray-400);
+  margin-top: 2px;
+}
+
+/* バッジ */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 6px;
+  border-radius: 10px;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.badge-danger { background: var(--danger); color: white; }
+.badge-warning { background: var(--warning); color: white; }
+.badge-primary { background: var(--primary); color: white; }
+
+/* 今日の復習 */
+.today-section { padding: 16px 16px 0; }
+
+.today-summary {
+  background: linear-gradient(135deg, var(--primary) 0%, #6b8af9 100%);
+  border-radius: var(--radius);
+  padding: 20px;
+  color: white;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.today-summary .count {
+  font-size: 48px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.today-summary .label {
+  font-size: 13px;
+  opacity: 0.9;
+  margin-top: 4px;
+}
+
+.today-summary .mascot { font-size: 48px; }
+
+.empty-today {
+  text-align: center;
+  padding: 40px 20px;
+  color: var(--gray-400);
+}
+
+.empty-today .emoji { font-size: 48px; margin-bottom: 8px; }
+.empty-today p { font-size: 15px; }
+
+/* 復習カード */
+.review-card {
+  background: white;
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  margin-bottom: 10px;
+  box-shadow: var(--shadow);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.review-card .subject-tag {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.review-card .info { flex: 1; min-width: 0; }
+.review-card .title { font-size: 14px; font-weight: 600; }
+.review-card .meta { font-size: 12px; color: var(--gray-400); margin-top: 2px; }
+
+.review-card .actions { display: flex; gap: 6px; flex-shrink: 0; }
+
+.btn-ok {
+  background: var(--success);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-ng {
+  background: var(--danger);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-skip {
+  background: var(--gray-100);
+  color: var(--gray-600);
+  border: none;
+  border-radius: 8px;
+  padding: 8px 10px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+/* 進捗バー */
+.progress-dots {
+  display: flex;
+  gap: 4px;
+  margin-top: 4px;
+}
+
+.progress-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--gray-200);
+}
+
+.progress-dot.done { background: var(--success); }
+.progress-dot.current { background: var(--warning); }
+
+/* 登録フォーム */
+.register-form { padding: 16px; }
+
+.form-section {
+  background: white;
+  border-radius: var(--radius);
+  padding: 16px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow);
+}
+
+.form-section h3 {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--gray-400);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 12px;
+}
+
+/* ラジオグループ */
+.radio-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.radio-option input { display: none; }
+
+.radio-option label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border: 2px solid var(--gray-200);
+  border-radius: 100px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.15s;
+  white-space: nowrap;
+}
+
+.radio-option input:checked + label {
+  border-color: var(--primary);
+  background: var(--primary-light);
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.subject-emoji { font-size: 16px; }
+
+/* セレクト */
+.select-row {
+  display: flex;
+  gap: 10px;
+}
+
+.select-group { flex: 1; }
+
+.select-group label {
+  font-size: 12px;
+  color: var(--gray-400);
+  display: block;
+  margin-bottom: 4px;
+}
+
+.select-group select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 2px solid var(--gray-200);
+  border-radius: 8px;
+  font-size: 15px;
+  background: white;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%239ca3af' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+}
+
+.select-group select:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+/* メモ */
+.memo-input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 2px solid var(--gray-200);
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: inherit;
+  resize: none;
+  height: 70px;
+}
+
+.memo-input:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+/* 登録ボタン */
+.btn-register {
+  width: 100%;
+  padding: 16px;
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: var(--radius);
+  font-size: 17px;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 4px;
+  transition: opacity 0.15s;
+}
+
+.btn-register:active { opacity: 0.85; }
+
+/* 問題一覧 */
+.list-section { padding: 16px; }
+
+.filter-row {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+  margin-bottom: 12px;
+  -webkit-overflow-scrolling: touch;
+}
+
+.filter-chip {
+  padding: 6px 14px;
+  border: 1.5px solid var(--gray-200);
+  border-radius: 100px;
+  font-size: 13px;
+  background: white;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.15s;
+}
+
+.filter-chip.active {
+  border-color: var(--primary);
+  background: var(--primary-light);
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.problem-card {
+  background: white;
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  margin-bottom: 10px;
+  box-shadow: var(--shadow);
+}
+
+.problem-card .top-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.problem-card .subject-tag {
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.problem-card .info { flex: 1; }
+.problem-card .title { font-size: 14px; font-weight: 600; }
+.problem-card .meta { font-size: 12px; color: var(--gray-400); margin-top: 2px; }
+.problem-card .memo-text { font-size: 12px; color: var(--gray-600); margin-top: 6px; font-style: italic; }
+
+.problem-card .bottom-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid var(--gray-100);
+}
+
+.next-review-label {
+  font-size: 12px;
+}
+
+.next-review-label.overdue { color: var(--danger); font-weight: 600; }
+.next-review-label.today { color: var(--warning); font-weight: 600; }
+.next-review-label.future { color: var(--gray-400); }
+.next-review-label.mastered { color: var(--success); font-weight: 600; }
+
+.btn-delete {
+  background: none;
+  border: none;
+  padding: 4px;
+  cursor: pointer;
+  color: var(--gray-400);
+  font-size: 16px;
+}
+
+/* 統計 */
+.stats-section { padding: 16px; }
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.stat-card {
+  background: white;
+  border-radius: var(--radius);
+  padding: 16px;
+  box-shadow: var(--shadow);
+  text-align: center;
+}
+
+.stat-card .value {
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--primary);
+}
+
+.stat-card .label {
+  font-size: 12px;
+  color: var(--gray-400);
+  margin-top: 4px;
+}
+
+.subject-stats { margin-bottom: 16px; }
+
+.subject-stat-row {
+  background: white;
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  margin-bottom: 8px;
+  box-shadow: var(--shadow);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.subject-stat-row .label { flex: 1; font-size: 14px; font-weight: 600; }
+.subject-stat-row .bar-wrap { flex: 2; height: 8px; background: var(--gray-100); border-radius: 4px; overflow: hidden; }
+.subject-stat-row .bar { height: 100%; border-radius: 4px; background: var(--primary); transition: width 0.5s; }
+.subject-stat-row .count { font-size: 13px; font-weight: 700; color: var(--primary); min-width: 30px; text-align: right; }
+
+/* トースト */
+.toast {
+  position: fixed;
+  bottom: 90px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: var(--gray-800);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 100px;
+  font-size: 14px;
+  opacity: 0;
+  transition: all 0.3s;
+  pointer-events: none;
+  z-index: 200;
+  white-space: nowrap;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* subject colors */
+.subject-算数 { background: #fff3e0; }
+.subject-国語 { background: #fce4ec; }
+.subject-理科 { background: #e8f5e9; }
+.subject-社会 { background: #e3f2fd; }
