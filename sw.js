@@ -1,5 +1,10 @@
 const CACHE_NAME = 'review-app-v1';
-const ASSETS = ['/', '/index.html', '/app.js', '/style.css'];
+const ASSETS = [
+  '/review-app/',
+  '/review-app/index.html',
+  '/review-app/app.js',
+  '/review-app/style.css',
+];
 
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(CACHE_NAME).then(c => c.addAll(ASSETS)));
